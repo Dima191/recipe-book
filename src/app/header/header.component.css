@@ -52,6 +52,7 @@
     position: fixed;
     right: 0;
     padding: 15px;
+    margin-top: 4rem;
     background: darkgrey;
     border-radius: 8px;
     list-style: none;

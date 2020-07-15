@@ -4,6 +4,7 @@ import {RecipeService} from '../recipe.service';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { Recipes } from '../recipe-list/recipe-list.component';
 import { Ingredients } from 'src/app/shopping-list/shopping-list.component';
+import {DataStorageService} from '../../data-storage.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -16,10 +17,10 @@ export class RecipeEditComponent implements OnInit {
 
   new = false;
 
-
   id: number;
   constructor( private route: ActivatedRoute,
-               private recipeService: RecipeService) {
+               private recipeService: RecipeService,
+               private dataStorageService: DataStorageService) {
     this.id = route.snapshot.params.id;
     if (this.id === undefined) {
       this.new = true;
@@ -38,9 +39,11 @@ export class RecipeEditComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (!this.new) {
       this.recipeService.editRecipe(form.value, this.id);
+      this.dataStorageService.storeRecipe();
     }
     else {
       this.recipeService.addRecipe(form.value);
+      this.dataStorageService.storeRecipe();
     }
   }
 

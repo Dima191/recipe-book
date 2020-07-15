@@ -1,6 +1,6 @@
 import { Component, OnInit , Output, EventEmitter, ElementRef, ViewChild} from '@angular/core';
 import { trigger, state, style, animate, transition} from '@angular/animations';
-// import {DataStorageService} from '../data-storage.service';
+import {DataStorageService} from '../data-storage.service';
 import {RecipeService} from '../recipe-book/recipe.service';
 
 @Component({
@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
   animation = 'start';
 
   constructor(
-    // private dataStorageService: DataStorageService,
+    private dataStorageService: DataStorageService,
                private recipeService: RecipeService) { }
 
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
   // }
   //
   // onFetch() {
-  //   this.dataStorageService.fetchRecipe().subscribe();
+  //   this.dataStorageService.fetchRecipe();
   // }
   show() {
     this.showMenu = !this.showMenu;
