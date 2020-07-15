@@ -1,0 +1,43 @@
+<nav class="header" #menu >
+
+
+  <div  class="menu" (click)="show()">
+    <div class="burger"></div>
+    <div class="burger"></div>
+    <div class="burger"></div>
+  </div>
+
+  <div *ngIf="showMenu">
+    <ul>
+      <li><a routerLink="/recipes" routerLinkActive="active" (click)="closeMenu()">Recipes</a></li>
+      <li><a routerLink="/shopping-list" routerLinkActive="active" (click)="closeMenu()">Shopping List</a></li>
+      <li><a routerLink="/auth" routerLinkActive="active" disabled style="cursor: not-allowed" (click)="closeMenu()">Authenticate</a></li>
+    </ul>
+  </div>
+
+<div class="inline">
+  <a href="#">Recipe Book</a>
+
+
+
+
+  <ul class="flex">
+    <li><a routerLink="/recipes" routerLinkActive="active" >Recipes</a></li>
+    <li><a routerLink="/shopping-list" routerLinkActive="active">Shopping List</a></li>
+    <li><a routerLink="/auth" routerLinkActive="active" disabled style="cursor: not-allowed">Authenticate</a></li>
+  </ul>
+
+
+  <a role="button" class="rel" (click)="animate()" style="cursor: pointer">Manage<span class="arrow" [@animation]="animation"></span></a >
+  <ul *ngIf="manage" class="mini-card">
+    <li><a style="cursor: pointer"
+      <!--           (click)="onSave()"-->
+      >Save Data</a></li>
+    <hr>
+    <li><a style="cursor: pointer"
+      <!--           (click)="onFetch()"-->
+      >Fetch Data</a></li>
+  </ul>
+</div>
+</nav>
+

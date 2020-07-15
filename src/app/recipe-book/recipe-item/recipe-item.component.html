@@ -1,0 +1,16 @@
+<a [routerLink]="[ ind ]" style="cursor: pointer">
+
+<div class="card">
+        <h3>{{recipe.name}}</h3><br>
+
+    <div class="flex">
+      <div>
+        <p>{{recipe.description}}</p><br>
+        <ul *ngFor="let ingredient of recipe.ingredients">
+          <li>{{ingredient.name}} ({{ingredient.amount}})</li>
+        </ul>
+      </div>
+        <img src="{{recipe.image}}">
+    </div>
+</div>
+</a>

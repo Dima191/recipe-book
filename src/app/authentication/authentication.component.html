@@ -1,0 +1,35 @@
+
+<div class="content">
+  <form #auth="ngForm" (ngSubmit)="onSubmit(auth)" *ngIf="!loading">
+    <input type="email"
+           placeholder="E-Mail"
+           ngModel
+           name="email"
+           required
+           email
+    >
+    <br>
+
+
+    <input type="password"
+           placeholder="Password"
+           ngModel
+           name="password"
+           required
+           minlength="6"
+    >
+    <br>
+
+    <button class="btn add_btn" [disabled]="!auth.valid" type="submit">Sign Up</button>
+    <button class="btn add_btn" [disabled]="!auth.valid" type="submit" (click)="login()">Log In</button>
+    <div class="clear"></div>
+  </form>
+  <div style="text-align: center" *ngIf="loading">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class="error" *ngIf="errorMessage">
+    <p>{{errorMessage }}</p>
+  </div>
+
+</div>

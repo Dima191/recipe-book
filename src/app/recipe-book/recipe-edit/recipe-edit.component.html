@@ -1,0 +1,59 @@
+  <script src="recipe-edit.component.ts"></script>
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <button class="btn btn_save" type="submit" [disabled]="!form.valid && form.touched" >Save</button>
+    <button class="btn btn_cancel" type="button" routerLink="" style="cursor: pointer">Cancel</button><br>
+
+
+    <input style="width: 100%"
+           type="text"
+           placeholder="Name"
+           [(ngModel)]="recipe.name"
+           name="name"
+           required
+    >
+
+    <hr>
+
+    <input style="width: 100%"
+           type="text"
+           placeholder="Image Url"
+           [(ngModel)]="recipe.image"
+           name="ImgUrl"
+           required
+    >
+
+
+
+    <img src="{{recipe.image}}">
+
+    <div class="clear"></div>
+
+    <hr>
+
+    <textarea type="text"
+              rows="6"
+              placeholder="Description"
+              [(ngModel)]="recipe.description"
+              name="Description"
+              required
+    ></textarea>
+
+
+
+    <hr>
+
+
+
+
+
+    <label>Ingredients:</label>
+
+
+
+        <div class="card" *ngFor="let ingredient of recipe.ingredients">
+          <p>{{ingredient.name}} ({{ingredient.amount}})</p>
+        </div>
+
+
+
+  </form>

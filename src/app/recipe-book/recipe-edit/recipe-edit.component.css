@@ -1,0 +1,65 @@
+.btn{
+  color: black;
+  padding: 15px;
+  border-radius: 5px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn:hover,
+.btn:active{
+}
+
+.btn:focus{
+  outline:none ;
+}
+
+.btn_save{
+  background-color: #00e800;
+}
+
+.btn_cancel{
+  background-color: #cb0000;
+}
+
+.btn:disabled{
+  opacity: 80%;
+  cursor: not-allowed;
+}
+
+textarea{
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 10rem;
+  max-height: 20rem;
+}
+input{
+  height: 1.2rem;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card{
+  border: 1px solid grey;
+  border-radius:8px;
+  margin-top: 0.5rem;
+  position: relative;
+  padding: 15px;
+}
+img{
+  max-width: 100%;
+  max-height: 10rem;
+  float: right;
+}
+.clear{
+  clear: both;
+}
+
+input:invalid{
+  border: 1px solid red;
+}

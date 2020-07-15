@@ -1,0 +1,13 @@
+<div class="inline_block">
+    <div class="inline_el">
+      <button class="btn" routerLink="new">Add recipe</button>
+      <app-recipe-item *ngFor="let recipe of recipes; let ind=index" [recipe]="recipe" [ind]="ind"></app-recipe-item>
+    </div>
+
+  <div class="inline_el">
+    <router-outlet></router-outlet>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,26 @@
+<div class="card">
+<img src="{{exactRecipe.image}}">
+<div class="clear"></div>
+<h1>{{exactRecipe.name}}</h1>
+<button class="btn" (click)="animate()">Manage Recipe<span class="arrow" [@animation]="animation"></span></button>
+<ul *ngIf="show" class="mini-card">
+  <li><a style="cursor: pointer" (click)="Add()">Add</a></li><hr>
+  <li><a style="cursor: pointer" routerLink="edit">Edit</a></li><hr>
+  <li><a style="cursor: pointer" (click)="Delete()" routerLink="">Delete</a></li>
+</ul>
+<div>
+  <h3>Description</h3>
+  <p>{{exactRecipe.description}}</p>
+  <h3>Ingredients</h3>
+  <ul *ngFor="let ingredient of exactRecipe.ingredients">
+    <li>{{ingredient.name}} ({{ingredient.amount}})</li>
+  </ul>
+</div>
+</div>
+
+
+<div [@notify]="notification">Products, which was added into the shopping-list:
+  <ul *ngFor="let ingredient of exactRecipe.ingredients">
+    <li>{{ingredient.name}} ({{ingredient.amount}})</li>
+  </ul>
+</div>

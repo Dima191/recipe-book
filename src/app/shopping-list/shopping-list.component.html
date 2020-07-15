@@ -1,0 +1,9 @@
+ <app-shopping-edit
+ (agreement)="onDelete($event)"
+ ></app-shopping-edit>
+
+<div class="card" *ngFor="let ingredient of ingredients; let id=index">
+  <p>{{ingredient.name}} ({{ingredient.amount}})
+    <span *ngIf="deleteAllow" (click)="deleteIngredient(id)" class="close" style="cursor: pointer"></span>
+  </p>
+</div>

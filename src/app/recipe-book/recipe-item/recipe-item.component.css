@@ -1,0 +1,53 @@
+img{
+  max-height: 12.5rem;
+  max-width: 20rem;
+  padding: 15px;
+}
+.card{
+  border:1px grey solid;
+  margin: 1rem 0;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+h3,
+p{
+  margin: 0.5rem;
+  color: black;
+}
+
+h3{
+  text-align: right;
+  margin-right: 2.5rem;
+  color: darkgrey;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+a{
+  text-decoration: none;
+}
+p{
+  /*max-width: calc(100% - 21rem);*/
+}
+li{
+  color: darkgrey;
+}
+
+li:hover,
+li:active{
+  color: darkgrey;
+}
+
+@media (max-width: 525px) {
+  img{
+    max-width: 10rem;
+    max-height: 12.5rem;
+  }
+  .flex{
+    display: block;
+  }
+}

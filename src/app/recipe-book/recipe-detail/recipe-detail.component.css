@@ -1,0 +1,71 @@
+.card{
+  margin: auto;
+  margin-top: calc(2rem + 30px);
+
+}
+
+.btn{
+  background-color: darkgrey;
+  color: black;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.btn:hover,
+.btn:active{
+  background-color: white;
+}
+
+.clear{
+  clear: both;
+}
+
+.btn:focus{
+  outline:none ;
+}
+ul{
+  list-style: none;
+}
+h1{
+  margin-top: 0;
+  text-align: right;
+  margin-right: 1.5rem;
+}
+img{
+  max-width: 100%;
+  max-height: 10rem;
+  float: right;
+}
+.clear{
+  clear: both;
+}
+.arrow{
+  margin-left: 10px;
+}
+.mini-card {
+  padding: 10px 10px;
+  right: 0;
+  padding: 15px;
+  position: relative;
+  background: darkgrey;
+  border-radius: 8px;
+  list-style: none;
+  max-width: 5rem;
+}
+.mini-card:before {
+  content: '';
+  border: solid transparent;
+  position: absolute;
+  bottom: 100%;
+  left: 18px;
+  border-bottom-color: darkgrey;
+  border-width: 9px;
+}
+.mini-card a{
+  text-decoration: none;
+  color: black;
+}
+
+.mini-card a:hover{
+  color: white;
+}

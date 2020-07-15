@@ -1,0 +1,62 @@
+img{
+  max-height: 200px;
+  max-width: 300px;
+}
+.card{
+  border:1px grey solid;
+  margin: 1rem 0;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.btn{
+  background-color: darkgrey;
+  color: black;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.btn:hover,
+.btn:active{
+  background-color: white;
+}
+
+
+.btn:focus{
+  outline:none ;
+}
+
+h3,
+p{
+  margin: 0.5rem;
+  color: black;
+}
+
+h3{
+  text-align: right;
+  margin-right: 2.5rem;
+  color: darkgrey;
+}
+
+
+.inline_block{
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+.inline_el{
+  width: 45vw;
+  margin-right: 1.2rem;
+  margin-left: 1.2rem;
+}
+@media (max-width: 1010px) {
+  .inline_block{
+    display: block;
+  }
+
+  .inline_el{
+    width: 90vw;
+    margin: 0;
+  }
+}
