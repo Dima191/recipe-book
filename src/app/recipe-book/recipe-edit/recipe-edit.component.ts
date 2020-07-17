@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {RecipeService} from '../recipe.service';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { Recipes } from '../recipe-list/recipe-list.component';
@@ -14,17 +14,21 @@ import {DataStorageService} from '../../data-storage.service';
 export class RecipeEditComponent implements OnInit {
 
   recipe: Recipes;
-
   new = false;
+
+  ingredients: Ingredients[] = [];
 
   id: number;
   constructor( private route: ActivatedRoute,
+               private router: Router,
                private recipeService: RecipeService,
                private dataStorageService: DataStorageService) {
     this.id = route.snapshot.params.id;
     if (this.id === undefined) {
       this.new = true;
     }
+
+
   }
 
   ngOnInit(): void {
@@ -34,6 +38,8 @@ export class RecipeEditComponent implements OnInit {
     else {
       this.recipe = {name: '', description: '', image: '', ingredients: []};
     }
+    console.log(this.recipe.ingredients);
+
   }
 
   onSubmit(form: NgForm) {
@@ -47,4 +53,11 @@ export class RecipeEditComponent implements OnInit {
     }
   }
 
+  addInput() {
+    if (this.recipe.ingredients === undefined ) {
+      this.recipe.ingredients.length = 0;
+    }
+    this.recipe.ingredients.length++;
+    console.log(this.recipe.ingredients);
+  }
 }

@@ -1,6 +1,8 @@
-  <script src="recipe-edit.component.ts"></script>
+
+
+
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-    <button class="btn btn_save" type="submit" [disabled]="!form.valid && form.touched" >Save</button>
+    <button class="btn btn_save" type="submit" routerLink="" [disabled]="!form.valid && form.touched" >Save</button>
     <button class="btn btn_cancel" type="button" routerLink="" style="cursor: pointer">Cancel</button><br>
 
 
@@ -50,9 +52,23 @@
 
 
 
-        <div class="card" *ngFor="let ingredient of recipe.ingredients">
-          <p>{{ingredient.name}} ({{ingredient.amount}})</p>
-        </div>
+    <div class="card" *ngFor="let ingredient of recipe.ingredients">
+      <p>{{ingredient.name}} ({{ingredient.amount}})</p>
+    </div>
+
+<!--    <div *ngFor="let ingredient of recipe.ingredients">-->
+<!--        <input type="text"-->
+<!--               [value]="ingredient.name"-->
+<!--               name="ingredientName"-->
+<!--        >-->
+
+<!--        <input type="number"-->
+<!--               [value]="ingredient.amount"-->
+<!--               name="ingredientAmount"-->
+<!--        >-->
+<!--    </div>-->
+
+        <button (click)="addInput()">Add Ingredient</button>
 
 
 

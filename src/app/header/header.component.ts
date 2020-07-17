@@ -2,6 +2,8 @@ import { Component, OnInit , Output, EventEmitter, ElementRef, ViewChild} from '
 import { trigger, state, style, animate, transition} from '@angular/animations';
 import {DataStorageService} from '../data-storage.service';
 import {RecipeService} from '../recipe-book/recipe.service';
+import {AuthService} from '../authentication/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -33,7 +35,7 @@ import {RecipeService} from '../recipe-book/recipe.service';
 export class HeaderComponent implements OnInit {
 
 
-  @ViewChild("menu", {static: false})
+  @ViewChild('menu', {static: false})
   header: ElementRef;
 
   showMenu = false;
@@ -43,7 +45,10 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private dataStorageService: DataStorageService,
-               private recipeService: RecipeService) { }
+    private recipeService: RecipeService,
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
 
@@ -80,5 +85,12 @@ export class HeaderComponent implements OnInit {
     this.showMenu = false;
     this.header.nativeElement.style.width = '100vw';
     this.header.nativeElement.style.height = '';
+  }
+
+  logOut() {
+    this.showMenu = false;
+    this.header.nativeElement.style.width = '100vw';
+    this.header.nativeElement.style.height = '';
+    this.authService.logOut();
   }
 }

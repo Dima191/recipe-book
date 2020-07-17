@@ -49,13 +49,14 @@ export class RecipeService {
     this.recipes[id].name = recipe.name;
     this.recipes[id].description = recipe.Description;
     this.recipes[id].image = recipe.ImgUrl;
+    this.recipes[id].ingredients = recipe.ingredients;
   }
 
   addRecipe(recipe){
     const AddRecipe: Recipes = {name: recipe.name,
       description: recipe.Description,
       image: recipe.ImgUrl,
-      ingredients: [{name: '', amount: 0}]};
+      ingredients: recipe.ingredients};
     this.recipes.push(AddRecipe);
     console.log(this.recipes);
 

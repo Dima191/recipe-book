@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthResponceData, AuthService } from './auth.service';
+import { AuthService } from './auth.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { Router } from '@angular/router';
 import {User} from './user.model';
@@ -38,8 +38,8 @@ export class AuthenticationComponent implements OnInit {
       this.authService.login(auth.value.email, auth.value.password).subscribe( resData => {
           console.log(resData);
           this.loading = false;
-          this.router.navigate(['/recipes']);
           this.errorMessage = null;
+          this.router.navigate(['/recipes']);
         },
         errorMessage => {
           console.log(errorMessage);
@@ -53,8 +53,6 @@ export class AuthenticationComponent implements OnInit {
           console.log(resData);
           this.loading = false;
           this.errorMessage = null;
-          this.router.navigate(['/recipes']);
-
         },
         errorMessage => {
           console.log(errorMessage);
@@ -70,6 +68,7 @@ export class AuthenticationComponent implements OnInit {
 
   login() {
     this.logMode = true;
+    console.log('login');
   }
 
 

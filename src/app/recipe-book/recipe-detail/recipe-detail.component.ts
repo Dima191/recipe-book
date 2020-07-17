@@ -5,6 +5,7 @@ import { trigger, state, style, animate, transition} from '@angular/animations';
 import { Ingredients } from 'src/app/shopping-list/shopping-list.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import {RecipeService} from '../recipe.service';
+import {DataStorageService} from '../../data-storage.service';
 
 
 @Component({
@@ -78,7 +79,8 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(private shoppingListService: ShoppingListService,
               private route: ActivatedRoute,
-              private recipeService: RecipeService) { }
+              private recipeService: RecipeService,
+              private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -107,5 +109,6 @@ export class RecipeDetailComponent implements OnInit {
 
   Delete() {
     this.recipeService.delete(this.id);
+    this.dataStorageService.storeRecipe();
   }
 }
