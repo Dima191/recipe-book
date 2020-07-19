@@ -1,75 +1,109 @@
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  <button class="btn btn_save" type="submit" [disabled]="!recipeForm.valid" >Save</button>
+  <button class="btn btn_cancel" type="button" (click)="onCancel()" style="cursor: pointer">Cancel</button><br>
+
+
+  <input style="width: 100%"
+         type="text"
+         placeholder="Name"
+         formControlName="name"
+         required
+  >
+
+  <hr>
+
+  <input style="width: 100%"
+         type="text"
+         placeholder="Image Url"
+         [(ngModel)]="img"
+         formControlName="image"
+         #image
+         required
+  >
 
 
 
-  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-    <button class="btn btn_save" type="submit" routerLink="" [disabled]="!form.valid && form.touched" >Save</button>
-    <button class="btn btn_cancel" type="button" routerLink="" style="cursor: pointer">Cancel</button><br>
+  <img src="{{img}}">
 
+  <div class="clear"></div>
 
-    <input style="width: 100%"
-           type="text"
-           placeholder="Name"
-           [(ngModel)]="recipe.name"
-           name="name"
-           required
-    >
+  <hr>
 
-    <hr>
-
-    <input style="width: 100%"
-           type="text"
-           placeholder="Image Url"
-           [(ngModel)]="recipe.image"
-           name="ImgUrl"
-           required
-    >
+  <textarea type="text"
+            rows="6"
+            placeholder="Description"
+            formControlName="description"
+            required
+  ></textarea>
 
 
 
-    <img src="{{recipe.image}}">
-
-    <div class="clear"></div>
-
-    <hr>
-
-    <textarea type="text"
-              rows="6"
-              placeholder="Description"
-              [(ngModel)]="recipe.description"
-              name="Description"
-              required
-    ></textarea>
-
-
-
-    <hr>
+  <hr>
 
 
 
 
 
-    <label>Ingredients:</label>
+  <label>Ingredients:</label>
 
 
 
-    <div class="card" *ngFor="let ingredient of recipe.ingredients">
-      <p>{{ingredient.name}} ({{ingredient.amount}})</p>
+
+<!--      <div formArrayName="ingredients">-->
+<!--        <div-->
+<!--          *ngFor="let ingredient of controls; let ind = index"-->
+<!--          formGroupName="ind">-->
+<!--          <input type="text"-->
+<!--                 formControlName="name"-->
+<!--                 name="ingredientName"-->
+<!--          >-->
+
+<!--          <input type="number"-->
+<!--                 formControlName="amount"-->
+<!--                 name="ingredientAmount"-->
+<!--          >-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--  <button (click)="addIngredient()" type="button">Add Ingredient</button>-->
+
+
+
+  <div class="col-xs-12" formArrayName="ingredients">
+    <div
+      class="row"
+      *ngFor="let ingredientCtrl of controls; let i = index"
+      [formGroupName]="i"
+      style="margin-top: 10px;">
+      <div class="col-xs-8">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name">
+      </div>
+      <div class="col-xs-2">
+        <input
+          type="number"
+          class="form-control"
+          formControlName="amount">
+      </div>
+      <div class="col-xs-2">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="onDeleteIngredient(i)">X</button>
+      </div>
     </div>
-
-<!--    <div *ngFor="let ingredient of recipe.ingredients">-->
-<!--        <input type="text"-->
-<!--               [value]="ingredient.name"-->
-<!--               name="ingredientName"-->
-<!--        >-->
-
-<!--        <input type="number"-->
-<!--               [value]="ingredient.amount"-->
-<!--               name="ingredientAmount"-->
-<!--        >-->
-<!--    </div>-->
-
-        <button (click)="addInput()">Add Ingredient</button>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="onAddIngredient()">Add Ingredient</button>
+      </div>
+    </div>
+  </div>
 
 
-
-  </form>
+</form>

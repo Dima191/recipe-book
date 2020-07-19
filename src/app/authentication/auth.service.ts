@@ -32,39 +32,39 @@ export class AuthService {
 
   signUp(email: string, password: string){
     return this.http
-      .post
+        .post
       <AuthResponceData>
       (
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAAkVRXslGGaDYDAE30Rx8WmMD1oP_TA7E',
-      {
-        email: email,
-        password: password,
-        returnSecureToken: true
-      })
-      .pipe(
-        catchError ( this.Error)
-      );
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBlRmEFO9y81Vjts_Nnb827pjzOJXVhtgo',
+          {
+            email: email,
+            password: password,
+            returnSecureToken: true
+          })
+        .pipe(
+          catchError ( this.Error)
+        );
   }
 
   login(email: string, password: string){
     return this.http
-      .post
+        .post
       <AuthResponceData>
-      ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAAkVRXslGGaDYDAE30Rx8WmMD1oP_TA7E', {
+      ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBlRmEFO9y81Vjts_Nnb827pjzOJXVhtgo', {
         email: email,
         password: password,
         returnSecureToken: true
-    })
-      .pipe(
-        catchError( this.Error),
-        tap( respData => {
-          const expirationDate = new Date(new Date().getTime() + +respData.expiresIn * 1000);
-          const user = new User(respData.email, respData.localId, respData.idToken, expirationDate);
-          this.user.next(user);
-          this.autoLogOut( +expirationDate * 1000);
-          localStorage.setItem('userData', JSON.stringify(user) );
-        })
-    );
+      })
+        .pipe(
+          catchError( this.Error),
+          tap( respData => {
+            const expirationDate = new Date(new Date().getTime() + +respData.expiresIn * 1000);
+            const user = new User(respData.email, respData.localId, respData.idToken, expirationDate);
+            this.user.next(user);
+            this.autoLogOut( +expirationDate * 1000);
+            localStorage.setItem('userData', JSON.stringify(user) );
+          })
+        );
   }
 
 

@@ -7,6 +7,7 @@ import {DataStorageService} from '../data-storage.service';
   providedIn: 'root'
 })
 export class RecipeService {
+  [x: string]: any;
 
   // selectRecipe = new EventEmitter<Recipes>();
 
@@ -22,14 +23,14 @@ export class RecipeService {
   //     image: 'https://media-cdn.tripadvisor.com/media/photo-s/0e/e0/56/61/burger-keyfi.jpg',
   //     ingredients: [{name: 'Buns', amount: 2}, {name: 'Meat', amount: 1}]
   //   },
-  //   {name: 'Teramisu',
+  //   {name: 'Tiramisu',
   //   description: 'Very Tasty Dish',
   //   image: 'https://ist.say7.info/img0005/69/569_0173u3g_3966_6hi.jpg',
-  //   ingredients: [{name: 'eggs', amount: 2}, {name: 'sugar', amount: 3}, {name: 'milk', amount: 1}]}
+  //   ingredients: [{name: 'eggs', amount: 3}, {name: 'sugar', amount: 3}, {name: 'milk', amount: 1}]}
   // ];
 
 
-  constructor() { }
+  // constructor( private dataStorageService: DataStorageService) { }
 
   setRecipes( recipes: Recipes[] ){
     if (recipes != null){
@@ -38,6 +39,7 @@ export class RecipeService {
   }
 
   getRecipes(){
+    console.log(this.recipes);
     return this.recipes;
   }
 
@@ -47,24 +49,27 @@ export class RecipeService {
 
   editRecipe(recipe, id: number){
     this.recipes[id].name = recipe.name;
-    this.recipes[id].description = recipe.Description;
-    this.recipes[id].image = recipe.ImgUrl;
+    this.recipes[id].description = recipe.description;
+    this.recipes[id].image = recipe.image;
     this.recipes[id].ingredients = recipe.ingredients;
+    // this.dataStorageService.storeRecipe();
   }
 
   addRecipe(recipe){
     const AddRecipe: Recipes = {name: recipe.name,
-      description: recipe.Description,
-      image: recipe.ImgUrl,
+      description: recipe.description,
+      image: recipe.image,
       ingredients: recipe.ingredients};
     this.recipes.push(AddRecipe);
+    console.log('recipe.service add recipe');
     console.log(this.recipes);
-
+    // this.dataStorageService.storeRecipe();
   }
 
 
   delete(id){
     this.recipes.splice(id, 1);
+    // this.dataStorageService.storeRecipe();
   }
 
 }

@@ -63,3 +63,8 @@ img{
 input:invalid{
   border: 1px solid red;
 }
+
+a{
+  color: black;
+  text-decoration: none;
+}
